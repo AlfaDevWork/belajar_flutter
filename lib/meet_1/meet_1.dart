@@ -93,7 +93,7 @@ class MeetSatu extends StatelessWidget {
           ),
           Expanded(child: Container(color: Colors.white)),
           Expanded(child: Container(color: Colors.grey)),
-          Expanded(child: Container(color: Colors.black))
+          Expanded(child: Container(color: Colors.black)),
         ],
       ),
     );
