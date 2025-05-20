@@ -25,7 +25,9 @@ class MeetSatu extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image(
-                  image: AssetImage("assets/download.jpeg"), //mau pakai pas foto tapi tidak ketem
+                  image: AssetImage(
+                    "assets/download.jpeg",
+                  ), //mau pakai pas foto tapi tidak ketem
                   width: 125,
                   height: 125,
                 ),
@@ -51,30 +53,29 @@ class MeetSatu extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                              Icon(
-                                Icons.location_on,
-                                color: Colors.redAccent,
-                                size: 20,
-                              ),
-                              SizedBox(width: 4),
-                              Expanded(
-                                child: Text(
-                                  'Serdang, Kemayoran, Jakarta Pusat',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.blue,
-                                  ),
-                                  overflow: TextOverflow.visible,
-                                  softWrap: true,
-                                ),
-                              ),
-                            ],
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.redAccent,
+                            size: 20,
                           ),
+                          SizedBox(width: 4),
+                          Expanded(
+                            child: Text(
+                              'Serdang, Kemayoran, Jakarta Pusat',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.blue,
+                              ),
+                              overflow: TextOverflow.visible,
+                              softWrap: true,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                      ],
-                    ),
+                  ],
+                ),
               ),
-              
             ],
           ),
           Row(),
