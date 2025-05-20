@@ -1,5 +1,7 @@
 //import 'package:belajar_flutter/latihan.dart';
-import 'package:belajar_flutter/tugas_1_flutter.dart';
+// import 'package:belajar_flutter/meet_1/meet_1.dart';
+import 'package:belajar_flutter/meet_1/meet_1.dart';
+// import 'package:belajar_flutter/meet_2/meet_2.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
       ),
-      home: Profil(),
+      home: MeetSatu(),
     );
   }
 }
