@@ -61,7 +61,7 @@ class MeetSatu extends StatelessWidget {
                           SizedBox(width: 4),
                           Expanded(
                             child: Text(
-                              'Serdang, Kemayoran, Jakarta Pusat',
+                              'Kemayoran, Jakarta Pusat',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Colors.blue,
@@ -78,7 +78,6 @@ class MeetSatu extends StatelessWidget {
               ),
             ],
           ),
-          Row(),
           SizedBox(height: 1),
           Padding(
             padding: EdgeInsets.all(10.0),
@@ -92,6 +91,9 @@ class MeetSatu extends StatelessWidget {
               ],
             ),
           ),
+          Expanded(child: Container(color: Colors.white)),
+          Expanded(child: Container(color: Colors.grey)),
+          Expanded(child: Container(color: Colors.black))
         ],
       ),
     );
