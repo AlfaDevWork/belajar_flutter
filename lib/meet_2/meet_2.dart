@@ -29,7 +29,8 @@ class MeetDua extends StatelessWidget {
           Center(
             child: Text(
               'Alfarezhi Mohamad Rasidan',
-              style: GoogleFonts.poppins(fontSize: 22, color: Color(0xFF111827)),
+              style: GoogleFonts.poppins(fontSize: 22, color: Color(0xFF111827),
+              fontWeight: FontWeight.bold),
             ),
           ),
           Padding(
@@ -99,7 +100,7 @@ class MeetDua extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),
@@ -123,7 +124,7 @@ class MeetDua extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),
