@@ -96,7 +96,7 @@ class MeetDua extends StatelessWidget {
                       // width: 15,
                       child: Center(
                         child: Text(
-                          'Postingan',
+                          'Postingan: 64',
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 20,
@@ -120,7 +120,7 @@ class MeetDua extends StatelessWidget {
                       // width: 15,
                       child: Center(
                         child: Text(
-                          'Followers',
+                          'Followers: 123',
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 20,
