@@ -8,6 +8,7 @@ class MeetTigaA extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.blue, title: Text('Meet Tiga A')),
       body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
         child: Center(
           child: Column(
             children: [
