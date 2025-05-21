@@ -32,7 +32,7 @@ class MeetDua extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 5),
             child: Container(
               padding: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
@@ -42,10 +42,37 @@ class MeetDua extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                SizedBox(
-                // height: 10,
-                width: 35, child: Icon(Icons.email, color: Colors.white),),
-                Text('alfarezhi.dev@gmail.com', style: TextStyle(color: Colors.white),),
+                  SizedBox(
+                    // height: 10,
+                    width: 35,
+                    child: Icon(Icons.email_rounded, color: Colors.white),
+                  ),
+                  Text(
+                    'alfarezhi.dev@gmail.com',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 80, vertical: 5),
+            child: Container(
+              padding: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.lightBlue,
+                borderRadius: BorderRadius.all(Radius.circular(24)),
+                border: Border.all(),
+              ),
+              child: Row(
+                children: [
+                  Spacer(),
+                  SizedBox(
+                    width: 35,
+                    child: Icon(Icons.phone, color: Colors.white),
+                  ),
+                  Text('0812-3456-7890', style: TextStyle(color: Colors.white)),
+                  Spacer(),
                 ],
               ),
             ),
