@@ -77,6 +77,53 @@ class MeetDua extends StatelessWidget {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: Row(
+              children: [
+                SizedBox(height: 20),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 25),
+                    decoration: BoxDecoration(
+                      color: Colors.blue[900],
+                      borderRadius: BorderRadius.all(Radius.circular(24)),
+                      border: Border.all()
+                    ),
+                    child: SizedBox(
+                      // width: 15,
+                      child: Center(
+                        child: Text(
+                          'Postingan',
+                          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10,),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 25),
+                    decoration: BoxDecoration(
+                      color: Colors.blue[800],
+                      borderRadius: BorderRadius.all(Radius.circular(24)),
+                      border: Border.all()
+                    ),
+                    child: SizedBox(
+                      // width: 15,
+                      child: Center(
+                        child: Text(
+                          'Followers',
+                          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
