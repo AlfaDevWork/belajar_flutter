@@ -18,7 +18,12 @@ class MeetTigaA extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
             ),
-            Icon(Icons.keyboard_arrow_down, color: Colors.white),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.keyboard_arrow_down, color: Colors.white),
+              padding: EdgeInsets.zero,
+              constraints: BoxConstraints(),
+            ),
           ],
         ),
         actions: [
