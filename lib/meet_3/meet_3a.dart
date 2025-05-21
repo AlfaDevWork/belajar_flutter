@@ -8,14 +8,33 @@ class MeetTigaA extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red[900],
-        title: Text(
-          'Ren Amamiya',
-          style: TextStyle(
-            fontSize: 24,
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
+        title: Row(
+          children: [
+            Text(
+              'Ren Amamiya',
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.white,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            Icon(Icons.keyboard_arrow_down, color: Colors.white),
+          ],
         ),
+        actions: [
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.add_box_outlined, color: Colors.white),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.menu, color: Colors.white),
+              ),
+            ],
+          ),
+        ],
       ),
       body: Column(
         children: [
