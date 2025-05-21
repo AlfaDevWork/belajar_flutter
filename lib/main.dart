@@ -1,6 +1,10 @@
 //import 'package:belajar_flutter/latihan.dart';
-// import 'package:belajar_flutter/meet_1/meet_1.dart';
+// ignore: unused_import
+import 'package:belajar_flutter/meet_1/meet_1.dart';
+// ignore: unused_import
 import 'package:belajar_flutter/meet_2/meet_2.dart';
+// ignore: unused_import
+import 'package:belajar_flutter/meet_3/meet_3a.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,8 +38,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
       ),
-      home: MeetDua(),
+      home: MeetTigaA(),
     );
   }
 }
-
