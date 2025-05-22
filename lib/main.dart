@@ -1,10 +1,12 @@
-//import 'package:belajar_flutter/latihan.dart';
+// ignore: unused_import
+import 'package:belajar_flutter/latihan/latihan.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/meet_1/meet_1.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/meet_2/meet_2.dart';
 // ignore: unused_import
-import 'package:belajar_flutter/meet_3/latihan.dart';
+import 'package:belajar_flutter/meet_3/meet_3.dart';
+import 'package:belajar_flutter/meet_4/meet_4.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,9 +38,9 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
-      home: MeetTigaA(),
+      home: MeetTiga(),
     );
   }
 }

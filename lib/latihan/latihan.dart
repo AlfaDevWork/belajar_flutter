@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MeetTigaA extends StatelessWidget {
-  const MeetTigaA({super.key});
+class Latihan extends StatelessWidget {
+  const Latihan({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +50,7 @@ class MeetTigaA extends StatelessWidget {
                 child: Container(
                   height: 100,
                   width: 100,
+
                   decoration: BoxDecoration(
                     color: Colors.blue[200],
                     borderRadius: BorderRadius.all(Radius.circular(50)),
@@ -105,6 +106,7 @@ class MeetTigaA extends StatelessWidget {
               ),
             ],
           ),
+          Text('Alfa'),
         ],
       ),
     );

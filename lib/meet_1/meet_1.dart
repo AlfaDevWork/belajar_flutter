@@ -26,8 +26,8 @@ class MeetSatu extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Image(
                   image: AssetImage(
-                    "assets/download.jpeg",
-                  ), //mau pakai pas foto tapi tidak ketem
+                    "assets/images/download.jpeg",
+                  ), //mau pakai pas foto tapi tidak ketemu
                   width: 125,
                   height: 125,
                 ),
