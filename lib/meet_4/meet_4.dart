@@ -6,24 +6,26 @@ class MeetEmpat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEAE4D5),
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: Color(0xffB6B09F),
+        backgroundColor: primaryColor,
         title: Center(
           child: Text(
             "Formulir & Daftar Produk",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
+        child: ListView(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xffEAE4D5),
+                  // color: Color(0xffEAE4D5),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Column(
@@ -55,7 +57,7 @@ class MeetEmpat extends StatelessWidget {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
                             borderSide: BorderSide(
-                              color: Color(0xffB6B09F),
+                              color: primaryColor,
                               width: 3,
                             ),
                           ),
@@ -83,7 +85,7 @@ class MeetEmpat extends StatelessWidget {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
                             borderSide: BorderSide(
-                              color: Color(0xffB6B09F),
+                              color: primaryColor,
                               width: 3,
                             ),
                           ),
@@ -111,7 +113,7 @@ class MeetEmpat extends StatelessWidget {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
                             borderSide: BorderSide(
-                              color: Color(0xffB6B09F),
+                              color: primaryColor,
                               width: 3,
                             ),
                           ),
@@ -129,8 +131,8 @@ class MeetEmpat extends StatelessWidget {
                       child: TextField(
                         keyboardType: TextInputType.multiline,
                         decoration: InputDecoration(
-                          labelText: 'Deskripsi',
-                          hintText: "Masukkan Deskripsi",
+                          labelText: 'Catatan',
+                          hintText: "Masukkan catatan",
                           fillColor: Color(0xffF2F2F2),
                           filled: true,
                           border: OutlineInputBorder(
@@ -139,7 +141,7 @@ class MeetEmpat extends StatelessWidget {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
                             borderSide: BorderSide(
-                              color: Color(0xffB6B09F),
+                              color: primaryColor,
                               width: 3,
                             ),
                           ),
@@ -153,6 +155,80 @@ class MeetEmpat extends StatelessWidget {
                         style: TextStyle(fontSize: 24, color: Colors.black87),
                       ),
                     ),
+                    SizedBox(height: 10),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 6,
+                        itemBuilder: (context, index) {
+                          final items = [
+                            {
+                              "title": "Espresso",
+                              "price": "Rp20.000",
+                              "image": "assets/images/Espresso.jpg",
+                            },
+                            {
+                              "title": "Latte",
+                              "price": "Rp25.000",
+                              "image": "assets/images/Latte.jpg",
+                            },
+                            {
+                              "title": "Cappuccino",
+                              "price": "Rp25.000",
+                              "image": "assets/images/Cappuccino.jpg",
+                            },
+                            {
+                              "title": "Americano",
+                              "price": "Rp22.000",
+                              "image": "assets/images/Americano.jpg",
+                            },
+                            {
+                              "title": "Macchiato",
+                              "price": "Rp27.000",
+                              "image": "assets/images/Macchiato.jpg",
+                            },
+                            {
+                              "title": "Mocha",
+                              "price": "Rp28.000",
+                              "image": "assets/images/Mocha.jpg",
+                            },
+                          ];
+
+                          final item = items[index];
+
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 6),
+                            child: ListTile(
+                              leading: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: SizedBox(
+                                  width: 60,
+                                  height: 60,
+                                  child: Image.asset(
+                                    item["image"]!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              title: Text(
+                                item["title"]!,
+                                style: TextStyle(color: textLight),
+                              ),
+                              subtitle: Text(item["price"]!),
+                              trailing: Icon(Icons.arrow_forward_ios),
+                              tileColor: secondaryColor,
+                              onTap: () {},
+                              // dense: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -163,3 +239,10 @@ class MeetEmpat extends StatelessWidget {
     );
   }
 }
+
+final backgroundColor = Color(0xFFF9F5F0);
+final primaryColor = Color(0xFF8E806A);
+final secondaryColor = Color(0xFFC3B091);
+final accentColor = Color(0xFFD9CAB3);
+final textDark = Color(0xFF2E2E2E);
+final textLight = Color(0xFFFFFFFF);
