@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MeetLima extends StatefulWidget {
   const MeetLima({super.key});
@@ -21,7 +20,10 @@ class _MeetLimastate extends State<MeetLima> {
       appBar: AppBar(
         title: Row(
           children: [
-            Text('Instagram', style: GoogleFonts.lobster(color: Colors.white)),
+            Text(
+              'Instagram',
+              style: TextStyle(color: Colors.white, fontFamily: 'Lobster'),
+            ),
             Icon(Icons.keyboard_arrow_down, color: Colors.white),
             Spacer(),
             Icon(Icons.favorite_border, color: Colors.white),
@@ -32,14 +34,15 @@ class _MeetLimastate extends State<MeetLima> {
         backgroundColor: Colors.black,
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
         onPressed: () {
           setState(() {
             like++;
           });
           // ignore: avoid_print
-          print(like);
+          // print(like);
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.favorite, color: Colors.red),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +131,13 @@ class _MeetLimastate extends State<MeetLima> {
                     SizedBox(width: 23),
                     likeCount(),
                     SizedBox(width: 5),
-                    Text('likes', style: TextStyle(color: Colors.white)),
+                    Text(
+                      'likes',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
                 Row(
@@ -150,25 +159,36 @@ class _MeetLimastate extends State<MeetLima> {
               ],
             ),
           ),
-          Row(
-            children: [
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: Container(
-              //     height: 30,
-              //     width: 100,
-              //     decoration: BoxDecoration(
-              //       color: Colors.blue,
-              //       borderRadius: BorderRadius.all(Radius.circular(24)),
-              //       border: Border.all(),
-              //     ),
-              //     child: Center(child: Text('Tekan aku')),
-              //   ),
-              // ),
-              buildGestureDetector(),
-            ],
+          Container(color: Colors.white, height: 2),
+          Container(
+            width: double.infinity,
+            height: 40,
+            color: Colors.black,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.settings, color: Colors.white),
+                    ),
+                    Text(
+                      'Developer Mode',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-          buildElevatedButton(),
+          Container(
+            color: Colors.black,
+            height: 182,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [buildGestureDetector(), buildElevatedButton()],
+            ),
+          ),
         ],
       ),
     );
@@ -177,16 +197,24 @@ class _MeetLimastate extends State<MeetLima> {
   GestureDetector buildGestureDetector() {
     return GestureDetector(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         child: Container(
-          height: 30,
-          width: 100,
+          height: 35,
+          width: 170,
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(24)),
             border: Border.all(),
           ),
-          child: Center(child: Text('Tekan aku')),
+          child: Center(
+            child: Text(
+              'Tekan aku',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ),
       ),
       onTap: () {
@@ -263,13 +291,18 @@ class _MeetLimastate extends State<MeetLima> {
               // print(Text('Wallpaper bagus'));
             },
             child: Text(
-              "Lihat Selengkapnya",
+              deskripsi
+                  ? "Wallpaper bagus banget banget"
+                  : "Wallpaper bagus...More",
               style: TextStyle(color: Colors.white),
             ),
           ),
-          deskripsi
-              ? Text('Wallpaper bagus', style: TextStyle(color: Colors.white))
-              : SizedBox(),
+          // deskripsi
+          //     ? Text(
+          //       'Wallpaper bagus banget ',
+          //       style: TextStyle(color: Colors.white),
+          //     )
+          //     : Text('test'),
         ],
       ),
     );
@@ -295,8 +328,8 @@ class _MeetLimastate extends State<MeetLima> {
 
   Container buildElevatedButton() {
     return Container(
-      height: 30,
       width: 400,
+      padding: EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         // color: Colors.blue,
         borderRadius: BorderRadius.all(Radius.circular(24)),
@@ -304,27 +337,41 @@ class _MeetLimastate extends State<MeetLima> {
       // color: Colors.grey,
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          SizedBox(
+            width: 170,
+            height: 35,
             child: ElevatedButton(
               onPressed: () {
                 setState(() {
                   nama = !nama;
                 });
               },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
               child: Text(
                 'Tampilkan Nama',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
-          nama ? Text('Nama saya: Alfarezhi') : SizedBox(),
+          SizedBox(width: 20),
+          nama
+              ? Text(
+                'Nama saya: Alfarezhi',
+                style: TextStyle(color: Colors.white),
+              )
+              : SizedBox(),
         ],
       ),
     );
   }
 
   Text likeCount() {
-    return Text(like.toString(), style: TextStyle(color: Colors.white));
+    return Text(
+      like.toString(),
+      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    );
   }
 }
