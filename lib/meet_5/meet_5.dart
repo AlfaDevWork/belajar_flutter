@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 class MeetLima extends StatefulWidget {
@@ -39,6 +41,7 @@ class _MeetLimastate extends State<MeetLima> {
           setState(() {
             like++;
           });
+          // ignore: duplicate_ignore
           // ignore: avoid_print
           // print(like);
         },
@@ -241,6 +244,7 @@ class _MeetLimastate extends State<MeetLima> {
               setState(() {
                 inkwelll = !inkwelll;
               });
+              // ignore: duplicate_ignore
               // ignore: avoid_print
               [print('Kotak disentuh')];
             },
