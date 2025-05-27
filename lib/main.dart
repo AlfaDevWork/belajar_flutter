@@ -10,7 +10,7 @@ import 'package:belajar_flutter/meet_3/meet_3.dart';
 import 'package:belajar_flutter/meet_4/meet_4.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/meet_5/meet_5.dart';
-import 'package:belajar_flutter/meet_6/meet_6.dart';
+import 'package:belajar_flutter/meet_7/meet_7.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,6 +24,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => const MeetEnam(),
+      //   '/home': (context) => const MeetLima(),
+      //   '/form': (context) => const MeetEmpat(),
+      // },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -44,7 +50,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: MeetEnam(),
+      home: MeetTujuh(),
     );
   }
 }

@@ -238,7 +238,9 @@ class _MeetEnamState extends State<MeetEnam> {
         borderRadius: BorderRadius.all(Radius.elliptical(10, 10)),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/home');
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color(0xff7D00D0),
           shape: RoundedRectangleBorder(

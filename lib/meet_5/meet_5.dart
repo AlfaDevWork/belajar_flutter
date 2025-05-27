@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+// ignore: unused_import
+import 'package:belajar_flutter/meet_4/meet_4.dart';
 import 'package:flutter/material.dart';
 
 class MeetLima extends StatefulWidget {
@@ -189,7 +191,31 @@ class _MeetLimastate extends State<MeetLima> {
             height: 182,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [buildGestureDetector(), buildElevatedButton()],
+              children: [
+                buildGestureDetector(),
+                buildElevatedButton(),
+                Row(
+                  children: [
+                    SizedBox(width: 13),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Kembali'),
+                    ),
+                    SizedBox(width: 5),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MeetEmpat()),
+                        );
+                      },
+                      child: Text('Formulir'),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
