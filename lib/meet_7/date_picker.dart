@@ -47,6 +47,7 @@ class _PageDatePickerState extends State<PageDatePicker> {
             ),
           ),
         ),
+        SizedBox(height: 10),
         Text(
           'Tanggal Lahir : ${selectedDate == null ? "Pilih tanggal terlebih dahulu!" : DateFormat("dd MMMM yyyy", "id").format(selectedDate!)}',
         ),
