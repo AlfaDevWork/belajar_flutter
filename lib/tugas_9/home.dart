@@ -1,27 +1,30 @@
-
-
 import 'package:belajar_flutter/meet_7/checkbox.dart';
 import 'package:belajar_flutter/meet_7/date_picker.dart';
 import 'package:belajar_flutter/meet_7/dropdown.dart';
 import 'package:belajar_flutter/meet_7/switch.dart';
 import 'package:belajar_flutter/meet_7/time_picker.dart';
+import 'package:belajar_flutter/tugas_9/list.dart';
+import 'package:belajar_flutter/tugas_9/list_map.dart';
+import 'package:belajar_flutter/tugas_9/model.dart';
 import 'package:flutter/material.dart';
 
-class MeetTujuh extends StatefulWidget {
-  const MeetTujuh({super.key});
+class HomeSweet extends StatefulWidget {
+  const HomeSweet({super.key});
 
   @override
-  State<MeetTujuh> createState() => _MeetTujuhState();
+  State<HomeSweet> createState() => _HomeSweetState();
 }
 
-class _MeetTujuhState extends State<MeetTujuh> {
+class _HomeSweetState extends State<HomeSweet> {
   final List<Widget> _screen = [
     PageCheckBox(),
     PageSwitch(),
     PageDropdown(),
     PageDatePicker(),
     PageTimePicker(),
-    
+    ListWidget(),
+    ListMapWidget(),
+    ModelClass(),
   ];
   final List<String> title = [
     "Syarat & Ketentuan",
@@ -29,6 +32,9 @@ class _MeetTujuhState extends State<MeetTujuh> {
     "Pilih Kategori Produk",
     "Pilih Tanggal Lahir",
     "Atur Pengingat",
+    "List Widget",
+    "ListMap Widget",
+    "Class Model",
   ];
   int currentIndex = 0;
   @override
@@ -151,7 +157,7 @@ class _MeetTujuhState extends State<MeetTujuh> {
             ),
             ListTile(
               leading: Icon(
-                Icons.calendar_month,
+                Icons.format_list_bulleted,
                 color: currentIndex == 5 ? Colors.lightBlue : null,
               ),
               title: Text(
@@ -167,7 +173,7 @@ class _MeetTujuhState extends State<MeetTujuh> {
             ),
             ListTile(
               leading: Icon(
-                Icons.calendar_month,
+                Icons.map,
                 color: currentIndex == 6 ? Colors.lightBlue : null,
               ),
               title: Text(
@@ -183,7 +189,7 @@ class _MeetTujuhState extends State<MeetTujuh> {
             ),
             ListTile(
               leading: Icon(
-                Icons.calendar_month,
+                Icons.data_object,
                 color: currentIndex == 7 ? Colors.lightBlue : null,
               ),
               title: Text(
