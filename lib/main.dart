@@ -10,8 +10,11 @@ import 'package:belajar_flutter/meet_3/meet_3.dart';
 import 'package:belajar_flutter/meet_4/meet_4.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/meet_5/meet_5.dart';
+import 'package:belajar_flutter/meet_6/meet_6.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/meet_8/meet_8.dart';
+import 'package:belajar_flutter/tugas_10/formulir.dart';
+// ignore: unused_import
 import 'package:belajar_flutter/tugas_9/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -27,12 +30,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // initialRoute: '/',
-      // routes: {
-      //   '/': (context) => const MeetEnam(),
-      //   '/home': (context) => const MeetLima(),
-      //   '/form': (context) => const MeetEmpat(),
-      // },
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MeetEnam(),
+        '/home': (context) => const HomeSweet(),
+        '/form': (context) => const FormulirPage(),
+      },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -58,7 +61,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: HomeSweet(),
+      // home: FormulirPage(),
     );
   }
 }

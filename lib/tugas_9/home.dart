@@ -3,6 +3,7 @@ import 'package:belajar_flutter/meet_7/date_picker.dart';
 import 'package:belajar_flutter/meet_7/dropdown.dart';
 import 'package:belajar_flutter/meet_7/switch.dart';
 import 'package:belajar_flutter/meet_7/time_picker.dart';
+import 'package:belajar_flutter/tugas_10/formulir.dart';
 import 'package:belajar_flutter/tugas_9/list.dart';
 import 'package:belajar_flutter/tugas_9/list_map.dart';
 import 'package:belajar_flutter/tugas_9/model.dart';
@@ -25,6 +26,7 @@ class _HomeSweetState extends State<HomeSweet> {
     ListWidget(),
     ListMapWidget(),
     ModelClass(),
+    FormulirPage(),
   ];
   final List<String> title = [
     "Syarat & Ketentuan",
@@ -35,6 +37,7 @@ class _HomeSweetState extends State<HomeSweet> {
     "List Widget",
     "ListMap Widget",
     "Class Model",
+    "Formulir",
   ];
   int currentIndex = 0;
   @override
@@ -199,6 +202,22 @@ class _HomeSweetState extends State<HomeSweet> {
               onTap: () {
                 setState(() {
                   currentIndex = 7;
+                  Navigator.pop(context);
+                });
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.data_object,
+                color: currentIndex == 8 ? Colors.lightBlue : null,
+              ),
+              title: Text(
+                'Formulir',
+                style: TextStyle(color: currentIndex == 8 ? Colors.blue : null),
+              ),
+              onTap: () {
+                setState(() {
+                  currentIndex = 8;
                   Navigator.pop(context);
                 });
               },
