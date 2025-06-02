@@ -11,7 +11,9 @@ import 'package:belajar_flutter/meet_4/meet_4.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/meet_5/meet_5.dart';
 import 'package:belajar_flutter/meet_7/meet_7.dart';
+import 'package:belajar_flutter/meet_8/meet_8.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,7 +52,12 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: MeetTujuh(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      home: MeetDelapan(),
     );
   }
 }
