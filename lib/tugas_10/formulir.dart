@@ -82,6 +82,8 @@ class _FormulirPageState extends State<FormulirPage> {
                   return "Wajib diisi";
                 } else if (!value.contains('@')) {
                   return 'Format email tidak valid';
+                } else if (!value.contains('.')) {
+                  return 'Format email tidak valid';
                 }
                 return null;
               },

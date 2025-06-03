@@ -13,6 +13,7 @@ import 'package:belajar_flutter/meet_5/meet_5.dart';
 import 'package:belajar_flutter/meet_6/meet_6.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/meet_8/meet_8.dart';
+import 'package:belajar_flutter/splash_screen.dart';
 import 'package:belajar_flutter/tugas_10/formulir.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/tugas_9/home.dart';
@@ -32,8 +33,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => const MeetEnam(),
-        '/home': (context) => const HomeSweet(),
+        '/': (context) => const SplashScreen(),
+        '/login': (context) => const MeetEnam(),
+        HomeSweet.id: (context) => const HomeSweet(),
         '/form': (context) => const FormulirPage(),
       },
       debugShowCheckedModeBanner: false,

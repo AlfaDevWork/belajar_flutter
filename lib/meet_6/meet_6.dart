@@ -1,3 +1,5 @@
+import 'package:belajar_flutter/helper/preference.dart';
+import 'package:belajar_flutter/tugas_9/home.dart';
 import 'package:flutter/material.dart';
 
 class MeetEnam extends StatefulWidget {
@@ -239,7 +241,8 @@ class _MeetEnamState extends State<MeetEnam> {
       ),
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/home');
+          PreferenceHandler.saveLogin(true);
+          Navigator.pushNamed(context, HomeSweet.id);
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color(0xff7D00D0),

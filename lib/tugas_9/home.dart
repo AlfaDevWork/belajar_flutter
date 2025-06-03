@@ -1,3 +1,5 @@
+import 'package:belajar_flutter/helper/preference.dart';
+import 'package:belajar_flutter/meet_6/meet_6.dart';
 import 'package:belajar_flutter/meet_7/checkbox.dart';
 import 'package:belajar_flutter/meet_7/date_picker.dart';
 import 'package:belajar_flutter/meet_7/dropdown.dart';
@@ -11,6 +13,7 @@ import 'package:flutter/material.dart';
 
 class HomeSweet extends StatefulWidget {
   const HomeSweet({super.key});
+  static const String id = "/tugas_9/model";
 
   @override
   State<HomeSweet> createState() => _HomeSweetState();
@@ -78,8 +81,9 @@ class _HomeSweetState extends State<HomeSweet> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               child: SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
                 child: Column(
                   children: [
                     ListTile(
@@ -242,6 +246,21 @@ class _HomeSweetState extends State<HomeSweet> {
                           currentIndex = 8;
                           Navigator.pop(context);
                         });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.exit_to_app, color: Colors.red),
+                      title: Text(
+                        'Keluar',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      onTap: () {
+                        PreferenceHandler.deleteLogin();
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => MeetEnam()),
+                          (route) => false,
+                        );
                       },
                     ),
                   ],
