@@ -14,91 +14,156 @@ class _FormulirPageState extends State<FormulirPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool _passwordVisible = false;
+  // bool _passwordVisible = false;
+  bool isFormValid = false;
+
+  void validateForm() {
+    final isValid =
+        _nameController.text.isNotEmpty &&
+        _emailController.text.contains('@') &&
+        _cityController.text.isNotEmpty;
+
+    if (isFormValid != isValid) {
+      setState(() {
+        isFormValid = isValid;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
-          TextFormField(
-            decoration: InputDecoration(labelText: "Nama Lengkap"),
-            controller: _nameController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Wajib diisi";
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 12),
-          TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(labelText: "Email"),
-            controller: _emailController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Wajib diisi";
-              } else if (!value.contains('@')) {
-                return 'Email tidak valid';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 12),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Nomor HP"),
-            keyboardType: TextInputType.number,
-            controller: _numberController,
-            validator: (value) {
-              return null;
-            },
-          ),
-          SizedBox(height: 12),
-          TextFormField(
-            controller: _cityController,
-            decoration: InputDecoration(labelText: "Kota Domisili"),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Wajib diisi";
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            obscureText: !_passwordVisible,
-            controller: _passwordController,
-            decoration: InputDecoration(
-              labelText: "Password",
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _passwordVisible ? Icons.visibility_off : Icons.visibility,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _passwordVisible = !_passwordVisible;
-                  });
-                },
-              ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Formulir Pendaftaran Kelas Flutter',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Wajib diisi";
-              } else if (value.length < 8) {
-                return "Password minimal 8 karakter";
-              }
-              return null;
-            },
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8, bottom: 4),
+            child: TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.elliptical(10, 10)),
+                ),
+                labelText: "Nama Lengkap",
+              ),
+              controller: _nameController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Wajib diisi";
+                }
+                return null;
+              },
+              onChanged: (_) => validateForm(),
+            ),
+          ),
+          SizedBox(height: 12),
+          Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8, bottom: 4),
+            child: TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.elliptical(10, 10)),
+                ),
+                labelText: "Email",
+              ),
+              controller: _emailController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Wajib diisi";
+                } else if (!value.contains('@')) {
+                  return 'Format email tidak valid';
+                }
+                return null;
+              },
+              onChanged: (_) => validateForm(),
+            ),
+          ),
+          SizedBox(height: 12),
+          Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8, bottom: 4),
+            child: TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.elliptical(10, 10)),
+                ),
+                labelText: "Nomor HP",
+              ),
+              keyboardType: TextInputType.number,
+              controller: _numberController,
+              validator: (value) {
+                return null;
+              },
+            ),
+          ),
+          SizedBox(height: 12),
+          Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            child: TextFormField(
+              controller: _cityController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.elliptical(10, 10)),
+                ),
+                labelText: "Kota Domisili",
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Wajib diisi";
+                }
+                return null;
+              },
+              onChanged: (_) => validateForm(),
+            ),
+          ),
+          // TextFormField(
+          //   obscureText: !_passwordVisible,
+          //   controller: _passwordController,
+          //   decoration: InputDecoration(
+          //     labelText: "Password",
+          //     suffixIcon: IconButton(
+          //       icon: Icon(
+          //         _passwordVisible ? Icons.visibility_off : Icons.visibility,
+          //       ),
+          //       onPressed: () {
+          //         setState(() {
+          //           _passwordVisible = !_passwordVisible;
+          //         });
+          //       },
+          //     ),
+          //   ),
+          //   validator: (value) {
+          //     if (value == null || value.isEmpty) {
+          //       return "Wajib diisi";
+          //     } else if (value.length < 8) {
+          //       return "Password minimal 8 karakter";
+          //     }
+          //     return null;
+          //   },
+          // ),
+          SizedBox(height: 18),
           DefaultButton(
             text: 'Daftar',
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                dialogSuccess(context);
-              }
-            },
+            onPressed:
+                isFormValid
+                    ? () {
+                      if (_formKey.currentState!.validate()) {
+                        dialogSuccess(context);
+                      }
+                    }
+                    : null,
+            backgroundColor:
+                // _formKey.currentState?.validate() == false
+                isFormValid ? Colors.white : Colors.grey,
           ),
         ],
       ),
@@ -113,14 +178,19 @@ class _FormulirPageState extends State<FormulirPage> {
           title: Text("Berhasil"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [Text("Email anda : ${_emailController.text}")],
+            children: [
+              Text("Nama Anda: ${_nameController.text}"),
+              Text("Email Anda: ${_emailController.text}"),
+              Text("Nomor HP: ${_numberController.text}"),
+              Text("Kota Domisili: ${_cityController.text}"),
+            ],
           ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("Tutup"),
+              child: Text("Batal"),
             ),
             TextButton(
               onPressed: () {
@@ -132,12 +202,12 @@ class _FormulirPageState extends State<FormulirPage> {
                           email: _emailController.text,
                           name: _nameController.text,
                           city: _cityController.text,
-                          password: _passwordController.text,
+                          // password: _passwordController.text,
                         ),
                   ),
                 );
               },
-              child: Text("Lanjut"),
+              child: Text("Lanjutkan"),
             ),
           ],
         );

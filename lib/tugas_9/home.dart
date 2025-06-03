@@ -78,149 +78,175 @@ class _HomeSweetState extends State<HomeSweet> {
                 ),
               ),
             ),
-            ListTile(
-              leading: Icon(
-                Icons.check,
-                color: currentIndex == 0 ? Colors.lightBlue : null,
+            Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: Icon(
+                        Icons.check,
+                        color: currentIndex == 0 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Syarat & Ketentuan',
+                        style: TextStyle(
+                          color: currentIndex == 0 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 0;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.toggle_on,
+                        color: currentIndex == 1 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Mode Gelap',
+                        style: TextStyle(
+                          color: currentIndex == 1 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 1;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.category_sharp,
+                        color: currentIndex == 2 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Pilih Kategori Produk',
+                        style: TextStyle(
+                          color: currentIndex == 2 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 2;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.calendar_month,
+                        color: currentIndex == 3 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Pilih Tanggal Lahir',
+                        style: TextStyle(
+                          color: currentIndex == 3 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 3;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.alarm,
+                        color: currentIndex == 4 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Atur Pengingat',
+                        style: TextStyle(
+                          color: currentIndex == 4 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 4;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.format_list_bulleted,
+                        color: currentIndex == 5 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Widget List',
+                        style: TextStyle(
+                          color: currentIndex == 5 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 5;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.map,
+                        color: currentIndex == 6 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Widget ListMap',
+                        style: TextStyle(
+                          color: currentIndex == 6 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 6;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.data_object,
+                        color: currentIndex == 7 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Class Model',
+                        style: TextStyle(
+                          color: currentIndex == 7 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 7;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.data_object,
+                        color: currentIndex == 8 ? Colors.lightBlue : null,
+                      ),
+                      title: Text(
+                        'Formulir',
+                        style: TextStyle(
+                          color: currentIndex == 8 ? Colors.blue : null,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          currentIndex = 8;
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
-              title: Text(
-                'Syarat & Ketentuan',
-                style: TextStyle(color: currentIndex == 0 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 0;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.toggle_on,
-                color: currentIndex == 1 ? Colors.lightBlue : null,
-              ),
-              title: Text(
-                'Mode Gelap',
-                style: TextStyle(color: currentIndex == 1 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 1;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.category_sharp,
-                color: currentIndex == 2 ? Colors.lightBlue : null,
-              ),
-              title: Text(
-                'Pilih Kategori Produk',
-                style: TextStyle(color: currentIndex == 2 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 2;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.calendar_month,
-                color: currentIndex == 3 ? Colors.lightBlue : null,
-              ),
-              title: Text(
-                'Pilih Tanggal Lahir',
-                style: TextStyle(color: currentIndex == 3 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 3;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.alarm,
-                color: currentIndex == 4 ? Colors.lightBlue : null,
-              ),
-              title: Text(
-                'Atur Pengingat',
-                style: TextStyle(color: currentIndex == 4 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 4;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.format_list_bulleted,
-                color: currentIndex == 5 ? Colors.lightBlue : null,
-              ),
-              title: Text(
-                'Widget List',
-                style: TextStyle(color: currentIndex == 5 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 5;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.map,
-                color: currentIndex == 6 ? Colors.lightBlue : null,
-              ),
-              title: Text(
-                'Widget ListMap',
-                style: TextStyle(color: currentIndex == 6 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 6;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.data_object,
-                color: currentIndex == 7 ? Colors.lightBlue : null,
-              ),
-              title: Text(
-                'Class Model',
-                style: TextStyle(color: currentIndex == 7 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 7;
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.data_object,
-                color: currentIndex == 8 ? Colors.lightBlue : null,
-              ),
-              title: Text(
-                'Formulir',
-                style: TextStyle(color: currentIndex == 8 ? Colors.blue : null),
-              ),
-              onTap: () {
-                setState(() {
-                  currentIndex = 8;
-                  Navigator.pop(context);
-                });
-              },
             ),
           ],
         ),
