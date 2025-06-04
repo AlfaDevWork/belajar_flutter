@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class FormulirPage extends StatefulWidget {
   const FormulirPage({super.key});
+  static const String id = "/form";
 
   @override
   State<FormulirPage> createState() => _FormulirPageState();
