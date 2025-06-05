@@ -12,7 +12,7 @@ import 'package:belajar_flutter/meet_4/meet_4.dart';
 import 'package:belajar_flutter/meet_5/meet_5.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/meet_8/meet_8.dart';
-import 'package:belajar_flutter/study_case_16/siswa_app.dart';
+import 'package:belajar_flutter/tugas_11/resep_masakan.dart';
 // ignore: unused_import
 import 'package:belajar_flutter/tugas_9/home.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: SiswaApp(),
+      home: ResepApp(),
     );
   }
 }

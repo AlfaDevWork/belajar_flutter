@@ -22,35 +22,39 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: TextStyle(color: Colors.white)),
-        SizedBox(height: 10),
-        TextFormField(
-          controller: controller,
-          obscureText: obscureText,
-          validator: validator,
-          keyboardType: keyboardType,
-          style: TextStyle(color: Colors.white),
-          cursorColor: Colors.white,
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: TextStyle(color: Color(0x66ffffff)),
-            filled: true,
-            fillColor: Color(0x4D575757),
-            border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.all(Radius.elliptical(4, 4)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 5),
+          TextFormField(
+            controller: controller,
+            obscureText: obscureText,
+            validator: validator,
+            keyboardType: keyboardType,
+            style: TextStyle(color: Colors.black),
+            cursorColor: Colors.black,
+            decoration: InputDecoration(
+              label: Text(label),
+              labelStyle: TextStyle(color: Colors.black),
+              hintText: hintText,
+              hintStyle: TextStyle(color: Colors.black),
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black),
+                borderRadius: BorderRadius.all(Radius.elliptical(4, 4)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black),
+                borderRadius: BorderRadius.all(Radius.elliptical(4, 4)),
+              ),
+              suffixIcon: suffixIcon,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.all(Radius.elliptical(4, 4)),
-            ),
-            suffixIcon: suffixIcon,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
