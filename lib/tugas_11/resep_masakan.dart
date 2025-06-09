@@ -1,4 +1,5 @@
 import 'package:belajar_flutter/tugas_11/database/db_helper_resep.dart';
+import 'package:belajar_flutter/tugas_11/edit_resep.dart';
 import 'package:belajar_flutter/tugas_11/model/resep_model.dart';
 import 'package:belajar_flutter/utils/button.dart';
 import 'package:belajar_flutter/utils/formtextfield.dart';
@@ -53,81 +54,123 @@ class _ResepAppState extends State<ResepApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Resep Makanan')),
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              CustomTextField(
-                validator:
-                    (value) => value!.isEmpty ? 'Nama wajib diisi' : null,
-                controller: namaController,
-                label: 'Nama Masakan',
-              ),
-              CustomTextField(
-                validator:
-                    (value) => value!.isEmpty ? 'Kategori wajib diisi' : null,
-                controller: kategoriController,
-                label: 'Kategori',
-              ),
-              CustomTextField(
-                validator:
-                    (value) => value!.isEmpty ? 'Asal wajib diisi' : null,
-                controller: asalController,
-                label: 'Asal Masakan',
-              ),
-              CustomTextField(
-                validator:
-                    (value) => value!.isEmpty ? 'Bahan wajib diisi' : null,
-                controller: bahanController,
-                label: "Bahan Masakan",
-              ),
-              SizedBox(height: 16),
-              DefaultButton(text: 'Simpan', onPressed: simpanData),
-              // ElevatedButton(onPressed: simpanData, child: Text('Simpan')),
-              Divider(height: 32),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: daftarResep.length,
-                  itemBuilder: (context, index) {
-                    final resep = daftarResep[index];
-                    return ListTile(
-                      title: Text(resep.nama),
-                      subtitle: Text('${resep.kategori} • ${resep.asal}'),
-                      trailing: IconButton(
-                        icon: Icon(Icons.more_horiz),
-                        onPressed:
-                            () => showDialog(
-                              context: context,
-                              builder:
-                                  (_) => AlertDialog(
-                                    title: Text(resep.nama),
-                                    content: SingleChildScrollView(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text('Bahan:\n${resep.bahan}'),
-                                        ],
-                                      ),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(context),
-                                        child: Text('Tutup'),
-                                      ),
-                                    ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text('Resep Makanan')),
+        body: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                CustomTextField(
+                  validator:
+                      (value) => value!.isEmpty ? 'Nama wajib diisi' : null,
+                  controller: namaController,
+                  label: 'Nama Masakan',
+                ),
+                CustomTextField(
+                  validator:
+                      (value) => value!.isEmpty ? 'Kategori wajib diisi' : null,
+                  controller: kategoriController,
+                  label: 'Kategori',
+                ),
+                CustomTextField(
+                  validator:
+                      (value) => value!.isEmpty ? 'Asal wajib diisi' : null,
+                  controller: asalController,
+                  label: 'Asal Masakan',
+                ),
+                CustomTextField(
+                  validator:
+                      (value) => value!.isEmpty ? 'Bahan wajib diisi' : null,
+                  controller: bahanController,
+                  label: "Bahan Masakan",
+                ),
+                SizedBox(height: 16),
+                DefaultButton(text: 'Simpan', onPressed: simpanData),
+                // ElevatedButton(onPressed: simpanData, child: Text('Simpan')),
+                Divider(height: 32),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: daftarResep.length,
+                    itemBuilder: (context, index) {
+                      final resep = daftarResep[index];
+                      return ListTile(
+                        title: Text(resep.nama),
+                        subtitle: Text('${resep.kategori} • ${resep.asal}'),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              onPressed: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (_) => EditResepScreen(resep: resep),
+                                  ),
+                                );
+                                muatData();
+                              },
+                              icon: Icon(Icons.edit),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.more_horiz),
+                              onPressed:
+                                  () => showDialog(
+                                    context: context,
+                                    builder:
+                                        (_) => AlertDialog(
+                                          title: Text(resep.nama),
+                                          content: SingleChildScrollView(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text('Bahan:\n${resep.bahan}'),
+                                              ],
+                                            ),
+                                          ),
+                                          actions: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                TextButton(
+                                                  onPressed: () async {
+                                                    await DBHelperResep.deleteResep(
+                                                      resep.id!,
+                                                    );
+                                                    Navigator.pop(context);
+                                                    setState(() => muatData());
+                                                  },
+                                                  child: Text('Hapus'),
+                                                ),
+                                                TextButton(
+                                                  onPressed:
+                                                      () => Navigator.pop(
+                                                        context,
+                                                      ),
+                                                  child: Text('Tutup'),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                   ),
                             ),
-                      ),
-                    );
-                  },
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
