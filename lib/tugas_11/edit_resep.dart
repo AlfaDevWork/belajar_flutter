@@ -1,5 +1,7 @@
 import 'package:belajar_flutter/tugas_11/database/db_helper_resep.dart';
 import 'package:belajar_flutter/tugas_11/model/resep_model.dart';
+import 'package:belajar_flutter/utils/button.dart';
+import 'package:belajar_flutter/utils/textfield.dart';
 import 'package:flutter/material.dart';
 
 class EditResepScreen extends StatefulWidget {
@@ -40,26 +42,14 @@ class _EditResepScreenState extends State<EditResepScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Edit Resep')),
+      appBar: AppBar(title: Text('Edit Resep ${widget.resep.nama}')),
       body: Column(
         children: [
-          TextField(
-            controller: namaController,
-            decoration: InputDecoration(labelText: 'Nama Masakan'),
-          ),
-          TextField(
-            controller: kategoriController,
-            decoration: InputDecoration(labelText: 'Kategori'),
-          ),
-          TextField(
-            controller: asalController,
-            decoration: InputDecoration(labelText: 'Asal Makanan'),
-          ),
-          TextField(
-            controller: bahanController,
-            decoration: InputDecoration(labelText: 'Bahan Masakan'),
-          ),
-          ElevatedButton(onPressed: update, child: Text('Update')),
+          CustomTextField(controller: namaController, label: 'Nama Masakan'),
+          CustomTextField(controller: kategoriController, label: 'Kategori'),
+          CustomTextField(controller: asalController, label: 'Asal Makanan'),
+          CustomTextField(controller: bahanController, label: 'Bahan Masakan'),
+          DefaultButton(text: 'Update', onPressed: update),
         ],
       ),
     );

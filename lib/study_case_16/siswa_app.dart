@@ -49,8 +49,8 @@ class _SiswaAppState extends State<SiswaApp> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            CustomTextField(controller: namaController, label: 'Nama'),
-            CustomTextField(
+            CustomFormTextField(controller: namaController, label: 'Nama'),
+            CustomFormTextField(
               controller: umurController,
               label: 'Umur',
               keyboardType: TextInputType.number,
@@ -64,8 +64,7 @@ class _SiswaAppState extends State<SiswaApp> {
                 itemBuilder: (context, index) {
                   final siswa = daftarSiswa[index];
                   return ListTile(
-                    leading: CircleAvatar(
-                      child: Text('${siswa.id}')),
+                    leading: CircleAvatar(child: Text('${siswa.id}')),
                     title: Text(siswa.nama),
                     subtitle: Text('Umur: ${siswa.umur}'),
                   );

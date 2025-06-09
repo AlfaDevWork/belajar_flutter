@@ -66,25 +66,25 @@ class _ResepAppState extends State<ResepApp> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                CustomTextField(
+                CustomFormTextField(
                   validator:
                       (value) => value!.isEmpty ? 'Nama wajib diisi' : null,
                   controller: namaController,
                   label: 'Nama Masakan',
                 ),
-                CustomTextField(
+                CustomFormTextField(
                   validator:
                       (value) => value!.isEmpty ? 'Kategori wajib diisi' : null,
                   controller: kategoriController,
                   label: 'Kategori',
                 ),
-                CustomTextField(
+                CustomFormTextField(
                   validator:
                       (value) => value!.isEmpty ? 'Asal wajib diisi' : null,
                   controller: asalController,
                   label: 'Asal Masakan',
                 ),
-                CustomTextField(
+                CustomFormTextField(
                   validator:
                       (value) => value!.isEmpty ? 'Bahan wajib diisi' : null,
                   controller: bahanController,
