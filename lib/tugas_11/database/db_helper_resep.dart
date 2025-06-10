@@ -25,6 +25,21 @@ class DBHelperResep {
     );
   }
 
+  static Future<void> updateResep(Resep resep) async {
+    final db = await DBHelperResep.db();
+    await db.update(
+      'resep',
+      resep.toMap(),
+      where: 'id = ?',
+      whereArgs: [resep.id],
+    );
+  }
+
+  static Future<void> deleteResep(int id) async {
+    final db = await DBHelperResep.db();
+    await db.delete('resep', where: 'id = ?', whereArgs: [id]);
+  }
+
   static Future<List<Resep>> getAllResep() async {
     final db = await DBHelperResep.db();
     final List<Map<String, dynamic>> maps = await db.query('resep');

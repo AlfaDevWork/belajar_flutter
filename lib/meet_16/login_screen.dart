@@ -77,13 +77,13 @@ class _LoginScreenAppState extends State<LoginScreenApp> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CustomTextField(
+                    CustomFormTextField(
                       controller: emailController,
                       label: 'Email',
                       hintText: 'John@email.com',
                     ),
                     SizedBox(height: 8),
-                    CustomTextField(
+                    CustomFormTextField(
                       controller: passwordController,
                       obscureText: !viewPassword,
                       label: 'Password',

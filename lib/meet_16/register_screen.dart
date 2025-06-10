@@ -80,7 +80,7 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CustomTextField(
+                    CustomFormTextField(
                       controller: nameController,
                       label: 'Name',
                       hintText: 'Nama',
@@ -91,7 +91,7 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
                                   : null,
                     ),
                     SizedBox(height: 8),
-                    CustomTextField(
+                    CustomFormTextField(
                       controller: emailController,
                       label: 'Email Address',
                       hintText: 'Email',
@@ -102,7 +102,7 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
                                   : null,
                     ),
                     SizedBox(height: 8),
-                    CustomTextField(
+                    CustomFormTextField(
                       controller: usernameController,
                       label: 'Username',
                       hintText: 'Alfarezhi Mohamad Rasidan',
@@ -113,7 +113,7 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
                                   : null,
                     ),
                     SizedBox(height: 8),
-                    CustomTextField(
+                    CustomFormTextField(
                       controller: phoneController,
                       label: 'Phone Number',
                       hintText: 'Phone',
@@ -124,7 +124,7 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
                                   : null,
                     ),
                     SizedBox(height: 8),
-                    CustomTextField(
+                    CustomFormTextField(
                       controller: passwordController,
                       label: 'Password',
                       hintText: '•••••••••••••',
@@ -267,12 +267,12 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
             print("Password: ${passwordController.text}");
             DBhelper.registerUser(
               data: UserModel(
-              email: emailController.text, 
-              password: passwordController.text,
-              name: nameController.text,
-              phone: phoneController.text,
-              username: usernameController.text
-              )
+                email: emailController.text,
+                password: passwordController.text,
+                name: nameController.text,
+                phone: phoneController.text,
+                username: usernameController.text,
+              ),
             );
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
