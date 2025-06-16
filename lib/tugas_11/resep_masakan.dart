@@ -37,7 +37,7 @@ class _ResepAppState extends State<ResepApp> {
   Future<void> simpanData() async {
     if (_formKey.currentState!.validate()) {
       final nama = namaController.text;
-      final kategori = kategoriController.text;
+      final kategori = kategoriController.text; 
       final asal = asalController.text;
       final bahan = bahanController.text;
 

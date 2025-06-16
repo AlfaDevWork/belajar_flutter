@@ -11,6 +11,7 @@ class DBHelperResep {
         return db.execute(
           'CREATE TABLE resep (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, kategori TEXT, asal TEXT, bahan TEXT)',
         );
+        
       },
       version: 1,
     );

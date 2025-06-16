@@ -17,7 +17,7 @@ class DBhelper {
   }
 
   static Future<void> registerUser({UserModel? data}) async {
-    final db = await initDB();
+    final db = await initDB ();
 
     await db.insert('users', {
       'name': data?.name,
