@@ -28,7 +28,7 @@ class DetailCatScreen extends StatelessWidget {
               Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -36,14 +36,17 @@ class DetailCatScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'GIF id: ${cat.id}',
+                        'Image ID: ${cat.id}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Text('Resolution: ${cat.width} x ${cat.height}'),
+                      Text(
+                        'Resolution: ${cat.width} x ${cat.height}',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 8),
                       Text(
                         'URL:',

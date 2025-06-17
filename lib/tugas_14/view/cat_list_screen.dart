@@ -62,7 +62,7 @@ class CatListScreen extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      'IMAGE ID: ${cat?.id}',
+                                      'Image ID: ${cat?.id}',
                                       style: TextStyle(color: Colors.white),
                                     ),
                                   ),
