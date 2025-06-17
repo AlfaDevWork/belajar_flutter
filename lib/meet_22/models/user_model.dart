@@ -1,41 +1,87 @@
-import 'dart:convert';
+// // To parse this JSON data, do
+// //
+// //     final welcome = welcomeFromJson(jsonString);
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-class Datum {
-  int? id;
-  String? name;
-  String? firstName;
-  String? lastName;
-  String? avatar;
-  Datum({
-    this.id,
-    this.name,
-    this.firstName,
-    this.lastName,
-    this.avatar,
-  });
+// import 'dart:convert';
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'firstName': firstName,
-      'lastName': lastName,
-      'avatar': avatar,
-    };
-  }
+// Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
 
-  factory Datum.fromMap(Map<String, dynamic> map) {
-    return Datum(
-      id: map['id'] != null ? map['id'] as int : null,
-      name: map['name'] != null ? map['name'] as String : null,
-      firstName: map['firstName'] != null ? map['firstName'] as String : null,
-      lastName: map['lastName'] != null ? map['lastName'] as String : null,
-      avatar: map['avatar'] != null ? map['avatar'] as String : null,
-    );
-  }
+// String welcomeToJson(Welcome data) => json.encode(data.toJson());
 
-  String toJson() => json.encode(toMap());
+// class Welcome {
+//   int? page;
+//   int? perPage;
+//   int? total;
+//   int? totalPages;
+//   List<Datum>? data;
+//   Support? support;
 
-  factory Datum.fromJson(String source) => Datum.fromMap(json.decode(source) as Map<String, dynamic>);
-}
+//   Welcome({
+//     this.page,
+//     this.perPage,
+//     this.total,
+//     this.totalPages,
+//     this.data,
+//     this.support,
+//   });
+
+//   factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+//     page: json["page"],
+//     perPage: json["per_page"],
+//     total: json["total"],
+//     totalPages: json["total_pages"],
+//     data:
+//         json["data"] == null
+//             ? []
+//             : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+//     support: json["support"] == null ? null : Support.fromJson(json["support"]),
+//   );
+
+//   Map<String, dynamic> toJson() => {
+//     "page": page,
+//     "per_page": perPage,
+//     "total": total,
+//     "total_pages": totalPages,
+//     "data":
+//         data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
+//     "support": support?.toJson(),
+//   };
+// }
+
+// class Datum {
+//   int? id;
+//   String? email;
+//   String? firstName;
+//   String? lastName;
+//   String? avatar;
+
+//   Datum({this.id, this.email, this.firstName, this.lastName, this.avatar});
+
+//   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+//     id: json["id"],
+//     email: json["email"],
+//     firstName: json["first_name"],
+//     lastName: json["last_name"],
+//     avatar: json["avatar"],
+//   );
+
+//   Map<String, dynamic> toJson() => {
+//     "id": id,
+//     "email": email,
+//     "first_name": firstName,
+//     "last_name": lastName,
+//     "avatar": avatar,
+//   };
+// }
+
+// class Support {
+//   String? url;
+//   String? text;
+
+//   Support({this.url, this.text});
+
+//   factory Support.fromJson(Map<String, dynamic> json) =>
+//       Support(url: json["url"], text: json["text"]);
+
+//   Map<String, dynamic> toJson() => {"url": url, "text": text};
+// }
