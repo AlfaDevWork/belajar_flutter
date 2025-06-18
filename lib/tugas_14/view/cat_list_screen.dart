@@ -1,6 +1,5 @@
 import 'package:belajar_flutter/tugas_14/api/get_cat.dart';
 import 'package:belajar_flutter/tugas_14/view/detail_cat_screen.dart';
-import 'package:belajar_flutter/tugas_14/models/cat_model.dart';
 import 'package:flutter/material.dart';
 
 class CatListScreen extends StatelessWidget {
@@ -63,7 +62,10 @@ class CatListScreen extends StatelessWidget {
                                   child: Center(
                                     child: Text(
                                       'Image ID: ${cat?.id}',
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
