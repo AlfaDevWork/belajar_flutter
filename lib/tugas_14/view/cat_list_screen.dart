@@ -22,61 +22,59 @@ class CatListScreen extends StatelessWidget {
               itemCount: cats?.length ?? 0,
               itemBuilder: (BuildContext context, int index) {
                 final cat = cats?[index];
-                return InkWell(
-                  onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => DetailCatScreen(cat: ),
-                        ),
-                      );
-                    
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(16),
-                    ),
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            ClipRRect(
-                              child: Image.network(
-                                cat?.url ?? '',
-                                height: 300,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Center(
-                              heightFactor: 10,
-                              child: Container(
-                                height: 30,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Color(0x66000000),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {
+                      if (cat != null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DetailCatScreen(cat: cat),
+                          ),
+                        );
+                      }
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(16),
+                      ),
+                      child: Column(
+                        children: [
+                          Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadiusGeometry.circular(20),
+                                child: Image.network(
+                                  cat?.url ?? '',
+                                  height: 300,
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    'GIF id: ${cat?.id}',
-                                    style: TextStyle(color: Colors.white),
+                              ),
+                              Center(
+                                heightFactor: 10,
+                                child: Container(
+                                  height: 30,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: Color(0x66000000),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Image ID: ${cat?.id}',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
-                // ListTile(
-                //   title: Text('${cat?.id}'),
-                //   leading: CircleAvatar(
-                //     backgroundImage: NetworkImage(cat?.url ?? ''),
-                //   ),
-                //   trailing: Icon(Icons.arrow_forward_ios, size: 12),
-                // );
               },
             );
           }
