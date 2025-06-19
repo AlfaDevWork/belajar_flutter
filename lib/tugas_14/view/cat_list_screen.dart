@@ -12,6 +12,7 @@ class CatListScreen extends StatefulWidget {
 
 class _CatListScreenState extends State<CatListScreen> {
   late Future<List<CatModel>> _future;
+  String _selectedFormat = 'All';
 
   @override
   void initState() {
@@ -25,13 +26,62 @@ class _CatListScreenState extends State<CatListScreen> {
     });
   }
 
+  List<CatModel> _filterCats(List<CatModel> cats) {
+    if (_selectedFormat == 'All') {
+      return cats;
+    }
+
+    return cats.where((cat) {
+      final url = cat.url.toLowerCase();
+      switch (_selectedFormat) {
+        case 'PNG':
+          return url.endsWith('.png');
+        case 'JPG':
+          return url.endsWith('.jpg') || url.endsWith('.jpeg');
+        case 'GIF':
+          return url.endsWith('.gif');
+        default:
+          return true;
+      }
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cat Gallery'),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black,
+        title: Text('Cat Gallery', style: TextStyle(color: Colors.white)),
         centerTitle: true,
-        surfaceTintColor: Colors.white,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton(
+                dropdownColor: Colors.black,
+                style: TextStyle(color: Colors.white),
+                value: _selectedFormat,
+                items:
+                    ['All', 'JPG', 'PNG', 'GIF']
+                        .map(
+                          (format) => DropdownMenuItem(
+                            value: format,
+                            child: Text(format),
+                          ),
+                        )
+                        .toList(),
+                onChanged: (value) {
+                  if (value != null) {
+                    setState(() {
+                      _selectedFormat = value;
+                    });
+                  }
+                },
+              ),
+            ),
+          ),
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: _refresh,
@@ -41,26 +91,48 @@ class _CatListScreenState extends State<CatListScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
             } else if (snapshot.hasData) {
-              final cats = snapshot.data;
+              final filteredCats = _filterCats(snapshot.data!);
+              // final cats = snapshot.data;
+              if (filteredCats.isEmpty) {
+                return Center(
+                  child: Text('No result', style: TextStyle(fontSize: 20)),
+                );
+              }
               return ListView.builder(
                 shrinkWrap: true,
-                itemCount: cats?.length ?? 0,
+                itemCount: filteredCats.length + 1,
                 itemBuilder: (BuildContext context, int index) {
-                  final cat = cats?[index];
+                  if (index == 0) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.swipe_down, color: Colors.grey, size: 20),
+                          SizedBox(width: 8),
+                          Text(
+                            'Swipe down to refresh',
+                            style: TextStyle(color: Colors.grey, fontSize: 11),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  final cat = filteredCats[index - 1];
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                       onTap: () {
-                        if (cat != null) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => DetailCatScreen(cat: cat),
-                            ),
-                          );
-                        }
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DetailCatScreen(cat: cat),
+                          ),
+                        );
                       },
                       child: Card(
+                        elevation: 6,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadiusGeometry.circular(16),
                         ),
@@ -73,7 +145,7 @@ class _CatListScreenState extends State<CatListScreen> {
                                     20,
                                   ),
                                   child: Image.network(
-                                    cat?.url ?? '',
+                                    cat.url,
                                     height: 300,
                                     width: double.infinity,
                                     fit: BoxFit.cover,
@@ -89,7 +161,7 @@ class _CatListScreenState extends State<CatListScreen> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        'Image ID: ${cat?.id}',
+                                        'Image ID: ${cat.id}',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
