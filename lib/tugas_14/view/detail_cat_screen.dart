@@ -8,7 +8,7 @@ class DetailCatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Detail'), centerTitle: true),
+      appBar: AppBar(title: Text('Cat Detail'), centerTitle: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -52,7 +52,10 @@ class DetailCatScreen extends StatelessWidget {
                         'URL:',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(cat.url, style: TextStyle(color: Colors.blue)),
+                      SelectableText(
+                        cat.url,
+                        style: TextStyle(color: Colors.blue),
+                      ),
                     ],
                   ),
                 ),
