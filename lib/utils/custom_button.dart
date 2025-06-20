@@ -4,14 +4,16 @@ class DefaultButton15 extends StatelessWidget {
   const DefaultButton15({
     super.key,
     this.onPressed,
-    required this.text,
+    this.text,
     this.backgroundColor = Colors.white,
     this.textColor = Colors.black,
+    this.child,
   });
   final void Function()? onPressed;
-  final String text;
+  final String? text;
   final Color backgroundColor;
   final Color textColor;
+  final Widget? child;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,8 +33,7 @@ class DefaultButton15 extends StatelessWidget {
             ),
             elevation: 0,
           ),
-          child: Text(
-            text,
+          child: child ?? Text(text ?? '',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,

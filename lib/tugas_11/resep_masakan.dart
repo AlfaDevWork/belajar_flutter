@@ -145,6 +145,7 @@ class _ResepAppState extends State<ResepApp> {
                                                     await DBHelperResep.deleteResep(
                                                       resep.id!,
                                                     );
+                                                    // ignore: use_build_context_synchronously
                                                     Navigator.pop(context);
                                                     setState(() => muatData());
                                                   },
