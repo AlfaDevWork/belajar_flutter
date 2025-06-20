@@ -2,14 +2,14 @@ import 'package:belajar_flutter/utils/custom_button.dart';
 import 'package:belajar_flutter/utils/custom_formtextfield.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen15 extends StatefulWidget {
-  const LoginScreen15({super.key});
+class RegisterScreen15 extends StatefulWidget {
+  const RegisterScreen15({super.key});
 
   @override
-  State<LoginScreen15> createState() => _LoginScreen15State();
+  State<RegisterScreen15> createState() => _RegisterScreen15State();
 }
 
-class _LoginScreen15State extends State<LoginScreen15> {
+class _RegisterScreen15State extends State<RegisterScreen15> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isVisible = false;
@@ -77,7 +77,7 @@ class _LoginScreen15State extends State<LoginScreen15> {
                 ),
                 SizedBox(height: 32),
                 DefaultButton15(
-                  text: 'Login',
+                  text: 'Register',
                   backgroundColor: Color(0xff4E0189),
                   textColor: Color(0xffFFFFFF),
                 ),
@@ -87,11 +87,20 @@ class _LoginScreen15State extends State<LoginScreen15> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account?"),
+                    Text("Don't have an account?"),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => RegisterScreen15(),
+                            ),
+                          );
+                        });
+                      },
                       child: Text(
-                        'Login',
+                        'Sign Up',
                         style: TextStyle(color: Colors.deepPurple),
                       ),
                     ),
