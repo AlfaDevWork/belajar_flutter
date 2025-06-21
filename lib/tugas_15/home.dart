@@ -12,10 +12,10 @@ class _HomeScreen15State extends State<HomeScreen15> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffF5F5F5),
-      appBar: AppBar(title: Text('Home')),
+      appBar: AppBar(title: Text('Beranda')),
       drawer: Drawer(
         child: Column(
-          children: [ListTile(title: Text('Logout'), onTap: () {})],
+          children: [ListTile(title: Text('Keluar'), onTap: () {})],
         ),
       ),
       body: Column(),
