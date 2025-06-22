@@ -10,9 +10,6 @@ class ProfileScreen15 extends StatefulWidget {
 class _ProfileScreen15State extends State<ProfileScreen15> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Color(0xffF5F5F5),
-
-    );
+    return Scaffold(backgroundColor: Color(0xffF5F5F5), body: Column());
   }
 }
