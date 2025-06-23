@@ -1,6 +1,6 @@
 import 'package:belajar_flutter/tugas_15/endpoint.dart';
-import 'package:belajar_flutter/tugas_15/model/register_error_response.dart';
-import 'package:belajar_flutter/tugas_15/model/register_response.dart';
+import 'package:belajar_flutter/tugas_15/model/register/register_error_params_response.dart';
+import 'package:belajar_flutter/tugas_15/model/register/register_response.dart';
 import 'package:http/http.dart' as http;
 
 class UserService {
@@ -17,9 +17,9 @@ class UserService {
     if (response.statusCode == 200) {
       return registerResponseFromJson(response.body).toJson();
     } else if (response.statusCode == 422) {
-      return registerErrorResponseFromJson(response.body).toJson();
+      return registerErrorParamsResponseFromJson(response.body).toJson();
     } else {
-      throw Exception("Failed to register user: ${response.statusCode}");
+      throw Exception("Gagal mendaftarkan pengguna: ${response.statusCode}");
     }
   }
 
@@ -32,15 +32,11 @@ class UserService {
       headers: {"Accept": "application/json"},
       body: {"email": email, "password": password},
     );
-    print(response.body);
-    print(response.statusCode);
     if (response.statusCode == 200) {
-      print(registerResponseFromJson(response.body).toJson());
       return registerResponseFromJson(response.body).toJson();
     } else if (response.statusCode == 422) {
-      return registerErrorResponseFromJson(response.body).toJson();
+      return registerErrorParamsResponseFromJson(response.body).toJson();
     } else {
-      print("Failed to register user: ${response.statusCode}");
       return {'errors': true, 'message': "Login gagal: ${response.statusCode}"};
     }
   }

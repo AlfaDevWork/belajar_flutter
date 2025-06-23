@@ -1,5 +1,5 @@
 import 'package:belajar_flutter/tugas_15/api/user_api.dart';
-import 'package:belajar_flutter/tugas_15/home.dart';
+import 'package:belajar_flutter/tugas_15/drawer.dart';
 import 'package:belajar_flutter/tugas_15/register.dart';
 import 'package:belajar_flutter/utils/custom_formtextfield.dart';
 import 'package:flutter/material.dart';
@@ -32,15 +32,15 @@ class _LoginScreen15State extends State<LoginScreen15> {
         SnackBar(
           behavior: SnackBarBehavior.floating,
           content: Text(
-            'Login Successful!',
-            style: TextStyle(color: Color(0xff999EA1)),
+            'Login Berhasil!',
+            style: TextStyle(color: Color(0xffffffff)),
           ),
           backgroundColor: Colors.deepPurple,
         ),
       );
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (_) => HomeScreen15()),
+        MaterialPageRoute(builder: (_) => DrawerScreen15()),
         (route) => false,
       );
     } else if (res["errors"] != null) {
@@ -49,7 +49,7 @@ class _LoginScreen15State extends State<LoginScreen15> {
           behavior: SnackBarBehavior.floating,
           content: Text(
             'Maaf, ${res["message"]}',
-            style: TextStyle(color: Color(0xff999EA1)),
+            style: TextStyle(color: Color(0xffffffff)),
           ),
           backgroundColor: Colors.red,
         ),
@@ -82,14 +82,14 @@ class _LoginScreen15State extends State<LoginScreen15> {
                   Padding(
                     padding: const EdgeInsets.only(left: 29, top: 62),
                     child: const Text(
-                      'Hi, Welcome Back!',
+                      'Hai, Selamat Datang Kembali!',
                       style: TextStyle(fontSize: 25),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 29),
                     child: const Text(
-                      "Hello again, you've been missed!",
+                      "Senang bertemu dengan Anda lagi! Mari lanjutkan perjalanan Anda.",
                       style: TextStyle(fontSize: 14, color: Color(0xff999EA1)),
                     ),
                   ),
@@ -103,21 +103,22 @@ class _LoginScreen15State extends State<LoginScreen15> {
                   ),
                   // SizedBox(height: 20),
                   CustomFormTextField15(
+                    keyboardType: TextInputType.emailAddress,
                     controller: emailController,
-                    hintText: 'Please Enter Your Email',
+                    hintText: 'Masukkan Email Anda',
                   ),
                   SizedBox(height: 12),
                   Padding(
                     padding: const EdgeInsets.only(left: 27, bottom: 7),
                     child: const Text(
-                      'Password',
+                      'Kata Sandi',
                       style: TextStyle(color: Colors.deepPurple),
                     ),
                   ),
                   CustomFormTextField15(
                     controller: passwordController,
                     obscureText: !isVisible,
-                    hintText: 'Please Enter Your Password',
+                    hintText: 'Masukkan Kata Sandi Anda',
                     suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
@@ -147,7 +148,6 @@ class _LoginScreen15State extends State<LoginScreen15> {
                           ),
                           elevation: 0,
                         ),
-
                         onPressed: () async {
                           login();
                         },
@@ -164,7 +164,7 @@ class _LoginScreen15State extends State<LoginScreen15> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Don't have an account?",
+                        "Belum punya akun?",
                         style: TextStyle(
                           fontSize: 14,
                           color: Color(0xff999EA1),
@@ -182,7 +182,7 @@ class _LoginScreen15State extends State<LoginScreen15> {
                           });
                         },
                         child: Text(
-                          'Sign Up',
+                          'Register',
                           style: TextStyle(color: Colors.deepPurple),
                         ),
                       ),

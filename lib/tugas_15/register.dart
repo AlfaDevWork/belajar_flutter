@@ -1,7 +1,9 @@
 import 'package:belajar_flutter/tugas_15/api/user_api.dart';
 import 'package:belajar_flutter/tugas_15/login.dart';
+import 'package:belajar_flutter/tugas_15/model/register/register_response.dart';
 import 'package:belajar_flutter/utils/custom_formtextfield.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class RegisterScreen15 extends StatefulWidget {
   const RegisterScreen15({super.key});
@@ -20,21 +22,20 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
   final _formkey = GlobalKey<FormState>();
 
   void register() async {
-    setState(() {
-      isLoading = true;
-    });
     final res = await userService.registerUser(
       email: emailController.text,
       name: nameController.text,
       password: passwordController.text,
     );
     if (res["data"] != null) {
+      print('User: ${res['data']['user']}');
+      print('Token: ${res['data']['token']}');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           behavior: SnackBarBehavior.floating,
           content: Text(
-            'Registration Successful!',
-            style: TextStyle(color: Color(0xff999EA1)),
+            'Pendaftaran Berhasil!',
+            style: TextStyle(color: Color(0xffffffff)),
           ),
           backgroundColor: Colors.deepPurple,
         ),
@@ -46,15 +47,12 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
           behavior: SnackBarBehavior.floating,
           content: Text(
             'Maaf, ${res["message"]}',
-            style: TextStyle(color: Color(0xff999EA1)),
+            style: TextStyle(color: Color(0xffffffff)),
           ),
           backgroundColor: Colors.red,
         ),
       );
     }
-    setState(() {
-      isLoading = false;
-    });
   }
 
   @override
@@ -74,15 +72,12 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 29, top: 62),
-                    child: Text(
-                      'Create an Account',
-                      style: TextStyle(fontSize: 25),
-                    ),
+                    child: Text('Buat Akun', style: TextStyle(fontSize: 25)),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 29),
                     child: Text(
-                      "Connect with your friends today!",
+                      "Bergabunglah dengan komunitas kami!",
                       style: TextStyle(fontSize: 14, color: Color(0xff999EA1)),
                     ),
                   ),
@@ -96,33 +91,34 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
                   ),
                   // SizedBox(height: 20),
                   CustomFormTextField15(
+                    keyboardType: TextInputType.emailAddress,
                     controller: emailController,
-                    hintText: 'Please Enter Your Email',
+                    hintText: 'Masukkan Email Anda',
                   ),
                   SizedBox(height: 12),
                   Padding(
                     padding: const EdgeInsets.only(left: 27, bottom: 7),
                     child: Text(
-                      'Name',
+                      'Nama',
                       style: TextStyle(color: Colors.deepPurple),
                     ),
                   ),
                   CustomFormTextField15(
                     controller: nameController,
-                    hintText: 'Please Enter Your Name',
+                    hintText: 'Masukkan Nama Anda',
                   ),
                   SizedBox(height: 12),
                   Padding(
                     padding: const EdgeInsets.only(left: 27, bottom: 7),
                     child: Text(
-                      'Password',
+                      'Kata Sandi',
                       style: TextStyle(color: Colors.deepPurple),
                     ),
                   ),
                   CustomFormTextField15(
                     controller: passwordController,
                     obscureText: !isVisible,
-                    hintText: 'Please Enter Your Password',
+                    hintText: 'Masukkan Kata Sandi Anda',
                     suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
@@ -158,13 +154,10 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
                             register();
                           }
                         },
-                        child:
-                            isLoading
-                                ? CircularProgressIndicator(color: Colors.white)
-                                : Text(
-                                  'Register',
-                                  style: TextStyle(color: Color(0xffFFFFFF)),
-                                ),
+                        child: Text(
+                          'Register',
+                          style: TextStyle(color: Color(0xffFFFFFF)),
+                        ),
                       ),
                     ),
                   ),
@@ -174,7 +167,7 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Already have an account?",
+                        "Sudah punya akun?",
                         style: TextStyle(
                           fontSize: 14,
                           color: Color(0xff999EA1),

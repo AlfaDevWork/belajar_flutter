@@ -1,23 +1,26 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final registerErrorParamsResponse = registerErrorParamsResponseFromJson(jsonString);
 
 import 'dart:convert';
 
-RegisterErrorResponse registerErrorResponseFromJson(String str) => RegisterErrorResponse.fromJson(json.decode(str));
+RegisterErrorParamsResponse registerErrorParamsResponseFromJson(String str) =>
+    RegisterErrorParamsResponse.fromJson(json.decode(str));
 
-String registerErrorResponseToJson(RegisterErrorResponse data) => json.encode(data.toJson());
+String registerErrorParamsResponseToJson(RegisterErrorParamsResponse data) =>
+    json.encode(data.toJson());
 
-class RegisterErrorResponse {
+class RegisterErrorParamsResponse {
   String? message;
   Errors? errors;
 
-  RegisterErrorResponse({this.message, this.errors});
+  RegisterErrorParamsResponse({this.message, this.errors});
 
-  factory RegisterErrorResponse.fromJson(Map<String, dynamic> json) => RegisterErrorResponse(
-    message: json["message"],
-    errors: json["errors"] == null ? null : Errors.fromJson(json["errors"]),
-  );
+  factory RegisterErrorParamsResponse.fromJson(Map<String, dynamic> json) =>
+      RegisterErrorParamsResponse(
+        message: json["message"],
+        errors: json["errors"] == null ? null : Errors.fromJson(json["errors"]),
+      );
 
   Map<String, dynamic> toJson() => {
     "message": message,
