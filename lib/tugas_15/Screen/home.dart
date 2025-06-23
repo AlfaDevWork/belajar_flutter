@@ -46,7 +46,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 95, left: 5),
+                          padding: const EdgeInsets.only(right: 100),
                           child: Text(
                             'alfarezhi',
                             style: TextStyle(color: Colors.white),

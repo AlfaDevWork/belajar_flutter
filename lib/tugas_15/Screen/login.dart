@@ -1,46 +1,50 @@
+import 'package:belajar_flutter/tugas_15/Screen/drawer.dart';
+import 'package:belajar_flutter/tugas_15/Screen/register.dart';
 import 'package:belajar_flutter/tugas_15/api/user_api.dart';
-import 'package:belajar_flutter/tugas_15/login.dart';
-import 'package:belajar_flutter/tugas_15/model/register/register_response.dart';
+import 'package:belajar_flutter/tugas_15/services/preference.dart';
 import 'package:belajar_flutter/utils/custom_formtextfield.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
-class RegisterScreen15 extends StatefulWidget {
-  const RegisterScreen15({super.key});
+class LoginScreen15 extends StatefulWidget {
+  const LoginScreen15({super.key});
 
   @override
-  State<RegisterScreen15> createState() => _RegisterScreen15State();
+  State<LoginScreen15> createState() => _LoginScreen15State();
 }
 
-class _RegisterScreen15State extends State<RegisterScreen15> {
+class _LoginScreen15State extends State<LoginScreen15> {
   final UserService userService = UserService();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isVisible = false;
   bool isLoading = false;
   final _formkey = GlobalKey<FormState>();
 
-  void register() async {
-    final res = await userService.registerUser(
+  void login() async {
+    setState(() {
+      isLoading = true;
+    });
+    final res = await userService.loginUser(
       email: emailController.text,
-      name: nameController.text,
       password: passwordController.text,
     );
     if (res["data"] != null) {
-      print('User: ${res['data']['user']}');
-      print('Token: ${res['data']['token']}');
+      SharedPreference.saveAuthToken(res["data"]["token"]);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           behavior: SnackBarBehavior.floating,
           content: Text(
-            'Pendaftaran Berhasil!',
+            'Login Berhasil!',
             style: TextStyle(color: Color(0xffffffff)),
           ),
           backgroundColor: Colors.deepPurple,
         ),
       );
-      Navigator.pop(context);
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => DrawerScreen15()),
+        (route) => false,
+      );
     } else if (res["errors"] != null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -50,6 +54,13 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
             style: TextStyle(color: Color(0xffffffff)),
           ),
           backgroundColor: Colors.red,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: Text('${res["message"]}'),
         ),
       );
     }
@@ -72,19 +83,22 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 29, top: 62),
-                    child: Text('Buat Akun', style: TextStyle(fontSize: 25)),
+                    child: const Text(
+                      'Hai, Selamat Datang Kembali!',
+                      style: TextStyle(fontSize: 25),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 29),
-                    child: Text(
-                      "Bergabunglah dengan komunitas kami!",
+                    child: const Text(
+                      "Senang bertemu dengan Anda lagi! Mari lanjutkan perjalanan Anda.",
                       style: TextStyle(fontSize: 14, color: Color(0xff999EA1)),
                     ),
                   ),
                   SizedBox(height: 52),
                   Padding(
                     padding: const EdgeInsets.only(left: 27, bottom: 7),
-                    child: Text(
+                    child: const Text(
                       'Email',
                       style: TextStyle(color: Colors.deepPurple),
                     ),
@@ -98,19 +112,7 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
                   SizedBox(height: 12),
                   Padding(
                     padding: const EdgeInsets.only(left: 27, bottom: 7),
-                    child: Text(
-                      'Nama',
-                      style: TextStyle(color: Colors.deepPurple),
-                    ),
-                  ),
-                  CustomFormTextField15(
-                    controller: nameController,
-                    hintText: 'Masukkan Nama Anda',
-                  ),
-                  SizedBox(height: 12),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 27, bottom: 7),
-                    child: Text(
+                    child: const Text(
                       'Kata Sandi',
                       style: TextStyle(color: Colors.deepPurple),
                     ),
@@ -148,26 +150,23 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
                           ),
                           elevation: 0,
                         ),
-
-                        onPressed: () {
-                          if (_formkey.currentState!.validate()) {
-                            register();
-                          }
+                        onPressed: () async {
+                          login();
                         },
                         child: Text(
-                          'Register',
+                          'Login',
                           style: TextStyle(color: Color(0xffFFFFFF)),
                         ),
                       ),
                     ),
                   ),
                   SizedBox(height: 20),
-                  SizedBox(height: 225),
+                  SizedBox(height: 300),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Sudah punya akun?",
+                      const Text(
+                        "Belum punya akun?",
                         style: TextStyle(
                           fontSize: 14,
                           color: Color(0xff999EA1),
@@ -179,13 +178,13 @@ class _RegisterScreen15State extends State<RegisterScreen15> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => LoginScreen15(),
+                                builder: (_) => RegisterScreen15(),
                               ),
                             );
                           });
                         },
                         child: Text(
-                          'Login',
+                          'Register',
                           style: TextStyle(color: Colors.deepPurple),
                         ),
                       ),
