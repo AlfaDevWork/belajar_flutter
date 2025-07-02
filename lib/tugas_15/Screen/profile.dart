@@ -1,3 +1,4 @@
+import 'package:belajar_flutter/tugas_15/Screen/login.dart';
 import 'package:belajar_flutter/tugas_15/api/user_api.dart';
 import 'package:flutter/material.dart';
 
@@ -68,6 +69,48 @@ class _ProfileScreen15State extends State<ProfileScreen15> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Text('Profile', style: TextStyle(fontFamily: 'Lobster')),
+            Spacer(),
+            IconButton(
+              icon: Icon(Icons.exit_to_app, color: Colors.red),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder:
+                      (context) => AlertDialog(
+                        title: Text('Konfirmasi'),
+                        content: Text('Apakah kamu yakin ingin keluar?'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text('Batal'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => LoginScreen15(),
+                                ),
+                                (route) => false,
+                              );
+                            },
+                            child: Text('Keluar'),
+                          ),
+                        ],
+                      ),
+                );
+              },
+            ),
+          ],
+        ),
+
+        // centerTitle: true,
+      ),
       backgroundColor: Color(0xffF5F5F5),
       body: Column(
         children: [

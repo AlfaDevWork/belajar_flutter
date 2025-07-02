@@ -1,4 +1,5 @@
 import 'package:belajar_flutter/tugas_15/Screen/drawer.dart';
+import 'package:belajar_flutter/tugas_15/Screen/home.dart';
 import 'package:belajar_flutter/tugas_15/Screen/register.dart';
 import 'package:belajar_flutter/tugas_15/api/user_api.dart';
 import 'package:belajar_flutter/tugas_15/services/preference.dart';
@@ -42,7 +43,7 @@ class _LoginScreen15State extends State<LoginScreen15> {
       );
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (_) => DrawerScreen15()),
+        MaterialPageRoute(builder: (_) => HomeScreen15()),
         (route) => false,
       );
     } else if (res["errors"] != null) {

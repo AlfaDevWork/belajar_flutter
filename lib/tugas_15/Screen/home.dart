@@ -2,6 +2,8 @@
 
 // ignore: unused_import
 import 'package:belajar_flutter/meet_4/meet_4.dart';
+import 'package:belajar_flutter/tugas_15/Screen/profile.dart';
+import 'package:belajar_flutter/tugas_15/api/user_api.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen15 extends StatefulWidget {
@@ -12,6 +14,9 @@ class HomeScreen15 extends StatefulWidget {
 }
 
 class _HomeScreen15state extends State<HomeScreen15> {
+  final UserService userService = UserService();
+  String? name;
+
   bool nama = false;
   bool fav = false;
   bool deskripsi = false;
@@ -19,16 +24,32 @@ class _HomeScreen15state extends State<HomeScreen15> {
   int like = 0;
 
   @override
+  void initState() {
+    super.initState();
+    getProfile();
+  }
+
+  Future<void> getProfile() async {
+    final userData = await userService.getUser();
+    setState(() {
+      name = userData['data']['name'];
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-
+      appBar: AppBar(
+        title: Text('Home', style: TextStyle(fontFamily: 'Lobster')),
+      ),
+      backgroundColor: Colors.white,
+      
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color: Colors.black,
+              color: Colors.white,
               width: 400,
               height: 55,
               child: Row(
@@ -36,9 +57,22 @@ class _HomeScreen15state extends State<HomeScreen15> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      radius: 18,
-                      backgroundImage: AssetImage('assets/images/Ren.jpeg'),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => ProfileScreen15()),
+                        );
+                      },
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Colors.blueGrey,
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                      ),
                     ),
                   ),
                   Padding(
@@ -48,8 +82,8 @@ class _HomeScreen15state extends State<HomeScreen15> {
                         Padding(
                           padding: const EdgeInsets.only(right: 100),
                           child: Text(
-                            'alfarezhi',
-                            style: TextStyle(color: Colors.white),
+                            name ?? '-',
+                            style: TextStyle(color: Colors.black),
                           ),
                           // Text(
                           //   'alfarezhi',
@@ -57,8 +91,8 @@ class _HomeScreen15state extends State<HomeScreen15> {
                           // ),
                         ),
                         Text(
-                          'alfarezhi • Original audio',
-                          style: TextStyle(color: Colors.white),
+                          '${name ?? '-'} • Original audio',
+                          style: TextStyle(color: Colors.black),
                         ),
                       ],
                     ),
@@ -66,7 +100,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
                   Spacer(),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
-                    child: Icon(Icons.more_vert, color: Colors.white),
+                    child: Icon(Icons.more_vert, color: Colors.black),
                   ),
                 ],
               ),
@@ -75,7 +109,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
 
             //
             Container(
-              color: Colors.black,
+              color: Colors.white,
               height: 50,
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 8),
@@ -86,19 +120,19 @@ class _HomeScreen15state extends State<HomeScreen15> {
                     children: [
                       buildIconButton(),
                       SizedBox(width: 2),
-                      Icon(Icons.chat_bubble_outline, color: Colors.white),
+                      Icon(Icons.chat_bubble_outline, color: Colors.black),
                       SizedBox(width: 13),
-                      Icon(Icons.send_outlined, color: Colors.white),
+                      Icon(Icons.send_outlined, color: Colors.black),
                     ],
                   ),
-                  Icon(Icons.bookmark_border, color: Colors.white),
+                  Icon(Icons.bookmark_border, color: Colors.black),
                 ],
               ),
             ),
             Container(
               height: 100,
               width: double.infinity,
-              color: Colors.black,
+              color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -111,7 +145,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
                       Text(
                         'likes',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -120,7 +154,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
                   Row(
                     children: [
                       SizedBox(width: 23),
-                      Text('alfarezhi', style: TextStyle(color: Colors.white)),
+                      Text(name ?? '-', style: TextStyle(color: Colors.black)),
                       buildTextButton(),
                     ],
                   ),
@@ -141,7 +175,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
           height: 35,
           width: 170,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.black,
             borderRadius: BorderRadius.all(Radius.circular(24)),
             border: Border.all(),
           ),
@@ -149,7 +183,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
             child: Text(
               'Tekan aku',
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -174,7 +208,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
         Container(
           height: 320,
           width: 400,
-          color: Colors.blue,
+          color: Colors.black,
           child: InkWell(
             onTap: () {
               setState(() {
@@ -234,7 +268,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
               deskripsi
                   ? "Wallpaper bagus banget banget"
                   : "Wallpaper bagus...More",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
             ),
           ),
           // deskripsi
@@ -252,7 +286,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
     return IconButton(
       icon: Icon(
         fav ? Icons.favorite : Icons.favorite_border,
-        color: fav ? Colors.red : Colors.white,
+        color: fav ? Colors.red : Colors.black,
       ),
       // Icon(
       //   Icons.favorite_border,
@@ -311,7 +345,7 @@ class _HomeScreen15state extends State<HomeScreen15> {
   Text likeCount() {
     return Text(
       like.toString(),
-      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
     );
   }
 }
